@@ -141,48 +141,64 @@ new Chart(document.getElementById("doughnut-chart4"), {
 });
 
 
+var data = {
 
-var month_usage = new Chart(context_month_usage, {
-    type: 'doughnut',
-    data: {
-
-      datasets: [
-        {
-          label: "Population (millions)",
-          backgroundColor: ["#2F8EE3", "#3FA745","#383C42"],
-          data: [100,100,1000]
-        }
-      ]
-    },
-    options: {
-      title: {
-        display: false,
-        text: 'Predicted world population (millions) in 2050'
-      }
+  labels: [2010,2011,2012,2013,2014,2015,2016,2017,2018,2019],
+  datasets: [{
+      data: [86,114,106,106,107,111,133,221,783,2478],
+      label: "Africa",
+      borderColor: "#3e95cd",
+      fill: false
+    }, {
+      data: [282,350,411,502,635,809,947,1402,3700,5267],
+      label: "Asia",
+      borderColor: "#8e5ea2",
+      fill: false
     }
-});
-
-var extrars_chart_line = new Chart(context_month_line, {
-  type: 'line',
+  ]
+}
+var month_usage = new Chart(context_month_usage, {
+  type: 'doughnut',
   data: {
-    labels: [1500,1600,1700,1750,1800,1850,1900,1950,1999,2050],
-    datasets: [{
-        data: [86,114,106,106,107,111,133,221,783,2478],
-        label: "Africa",
-        borderColor: "#3e95cd",
-        fill: false
-      }, {
-        data: [282,350,411,502,635,809,947,1402,3700,5267],
-        label: "Asia",
-        borderColor: "#8e5ea2",
-        fill: false
+
+    datasets: [
+      {
+        label: "Population (millions)",
+        backgroundColor: ["#2F8EE3", "#3FA745","#383C42"],
+        data: [100,100,1000]
       }
     ]
   },
+  options: {
+    title: {
+      display: false,
+      text: 'Predicted world population (millions) in 2050'
+    }
+  }
+});
+
+var extras_chart_line = new Chart(context_month_line, {
+  type: 'line',
+  data:  data,
   options: {
     title: {
       display: true,
       text: 'World population per region (in millions)'
     }
   }
+});
+
+$('#button_addExtra').click(function() {
+
+    var newDataset = {
+        label: $('#extra_date').val(),
+        backgroundColor: 'rgba(99, 255, 132, 0.2)',
+        borderColor: 'rgba(99, 255, 132, 1)',
+        borderWidth: 1,
+        fill: false,
+        data: [null, null,  1000, 2000, 2500, 2600,5000],
+    }
+    data.datasets.push(newDataset);
+    extras_chart_line.update();
+    alert($('#extra_date').val() + " Adicionado");
 });
