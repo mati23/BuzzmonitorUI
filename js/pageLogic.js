@@ -29,3 +29,11 @@ function checaUnlimited(){
   }
   return parseInt($('#input_chart1').val());
 }
+
+function addExtra(chart, label, data){
+  chart.data.labels.push(label);
+    chart.data.datasets.forEach((dataset) => {
+        dataset.data.push(data);
+    });
+    chart.update();
+}
