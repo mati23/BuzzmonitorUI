@@ -4,11 +4,15 @@ Autor: Mateus Arruda de Medeiros
 Seção: Criação de gráficos.
 */
 
+//cada context representa o conteudo do chart (gráfico)
 var context1 = $('#doughnut-chart1');
-var context2 = document.getElementById("doughnut-chart2");
+var context2 = $("#doughnut-chart2");
 var context_month_usage = $('#chart_month_usage');
 var context_month_line = $('#chart_month_line');
 
+//Cada gráfico e seus respectivos atributos são definidos em uma váriável
+//Todos os gráficos com exceção do gráfico de linha na aba 'Month Usage' são do tipo Doughnut
+//Todos os gráficos seguem  o mesmo padrão de construção.
 var chart1 = new Chart(context1, {
     type: 'doughnut',
     data: {
@@ -28,7 +32,7 @@ var chart1 = new Chart(context1, {
       }
     }
 });
-
+//função para atualizar o chart quando algum botão for clicado
 function atualizaChart1(old_chart1){
 
   colors = ["#FBC21A", "#3FA745", "#aa00ff", "#00695c", "#388e3c","#ef6c00","#37474f","#ad1457", "#4527a0","#6a1b9a"]

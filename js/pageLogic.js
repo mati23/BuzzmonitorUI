@@ -3,6 +3,9 @@ Código feito para o desafio front-end para a ferramenta Buzzmonitor Admin
 Autor: Mateus Arruda de Medeiros
 Seção: Lógica de alguns elementos da página.
 */
+
+//Chega se o botão swith do chart 'Posts Collected (per month)' está ativo. Se não
+// o campo de texto fica desativado.
 function checaUnlimitedPerMonth(){
   var checkbox = document.getElementById("posts_collected");
 
@@ -22,7 +25,8 @@ $("#posts_collected").change(function(){
 });
 
 
-
+//Verifica se o botão swith do chart 'Projects' está ativo. Se não estiver só será
+//possível inserir no máximo 5 projetos.
 function checaUnlimited(){
   var checkbox = document.getElementById("switch_projects_collected");
   if(checkbox.checked == false) {
