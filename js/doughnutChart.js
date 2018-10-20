@@ -1,3 +1,9 @@
+/*
+Código feito para o desafio front-end para a ferramenta Buzzmonitor Admin
+Autor: Mateus Arruda de Medeiros
+Seção: Criação de gráficos.
+*/
+
 var context1 = $('#doughnut-chart1');
 var context2 = document.getElementById("doughnut-chart2");
 var context_month_usage = $('#chart_month_usage');
@@ -202,3 +208,87 @@ $('#button_addExtra').click(function() {
     extras_chart_line.update();
     alert($('#extra_date').val() + " Adicionado");
 });
+
+
+// **** Extending Doughnut Chart **** //
+
+Chart.defaults.derivedDoughnut = Chart.defaults.doughnut;
+var customDoughnut = Chart.controllers.doughnut.extend({
+  draw: function(ease) {
+    Chart.controllers.doughnut.prototype.draw.apply(this, [ease]);
+    var width = this.chart.chart.width,
+      height = this.chart.chart.height,
+      titleHeight = this.chart.titleBlock.height,
+      legendHeight = this.chart.legend.height;
+    var total = 70;
+    var fontSize = (height / 114).toFixed(2);
+    var ctx = this.chart.chart.ctx;
+    ctx.font = fontSize + "em Verdana";
+    ctx.textBaseline = "middle";
+    var text = total + "%",
+      textX = Math.round((width - ctx.measureText(text).width) / 2),
+      textY = (height+titleHeight+legendHeight)  / 2;
+
+    ctx.fillText(text, textX, textY);
+  }
+});
+Chart.controllers.derivedDoughnut = customDoughnut;
+
+// **** Extending Doughnut Chart **** //
+// ************* End ************* //
+
+
+var randomScalingFactor = function() {
+  return Math.round(Math.random() * 100);
+};
+var chartColors = {
+
+	orange: '#31363F',
+	yellow: '#00C32C',
+	green: '#9400A2',
+	blue: '#0B7FE6',
+	purple: 'rgb(153, 102, 255)',
+	grey: 'rgb(201, 203, 207)'
+};
+var config = {
+  type: 'derivedDoughnut',
+  data: {
+    datasets: [{
+      data: [
+
+        30,
+        15,
+        40,
+        15,
+      ],
+      backgroundColor: [
+
+
+        chartColors.yellow,
+        chartColors.green,
+        chartColors.blue,
+        chartColors.orange
+      ],
+      label: 'Dataset 1'
+    }],
+
+  },
+  options: {
+    responsive: true,
+    legend: {
+
+      position: 'top',
+    },
+    title: {
+      display: true,
+      text: ''
+    },
+    animation: {
+      animateScale: true,
+      animateRotate: true
+    }
+  }
+};
+
+var ctx = document.getElementById("chart-area").getContext("2d");
+window.myDoughnut = new Chart(ctx, config);

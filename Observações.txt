@@ -1,0 +1,11 @@
+Foram utilizadas as frameworks Bootstrap para interface gráfica, JQuery para
+código em JavaScript e ChartJS para criação dos gráficos. Fiz a lógica para os dois
+primeiros gráficos ('Projects' e 'Posts Collected (per month)') e a mesma lógica se aplica
+aos outros dois charts.
+Os itens de entrada ('user', 'activation state', 'account type' etc) só estão visíveis por
+caráter demonstrativo, mas não possuem nenhuma lógica atrelada a eles.
+
+-Os gráficos estão inseridos na página principal se encontram em 'doughnutChart.js'.
+-Algumas funções lógicas se encontram em 'pageLogic.js'.
+-Alguns componentes que não são da framework Bootstrap se encontram no arquivo 'css/custom.css'.
+-O código também está na minha conta no GitHub (mati23) de forma privada.

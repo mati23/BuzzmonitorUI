@@ -1,3 +1,8 @@
+/*
+Código feito para o desafio front-end para a ferramenta Buzzmonitor Admin
+Autor: Mateus Arruda de Medeiros
+Seção: Lógica de alguns elementos da página.
+*/
 function checaUnlimitedPerMonth(){
   var checkbox = document.getElementById("posts_collected");
 
